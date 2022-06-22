@@ -1,6 +1,7 @@
 import os
 # import Flask from flask. capital f Flask is class name
-from flask import Flask     
+# saves from having to type html with tags etc
+from flask import Flask, render_template    
 
 app = Flask(__name__)    
 
@@ -8,7 +9,7 @@ app = Flask(__name__)
 # app.route decorator
 @app.route("/")    # flask what url should trigger function that follows
 def index():
-    return "Hello, World"
+    return render_template("index.html")  # will render html page 
 
 
 # create instancce of class. convention in flask is that variable is called app
