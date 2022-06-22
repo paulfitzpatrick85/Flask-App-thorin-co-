@@ -9,8 +9,10 @@
 <body>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
+<!--flask sees double curly braces, looks at text and knows its the route from lines 12 and 17 on run.py, the names must match the view*-->
+             <li><a href="{{ url_for('index') }}">Home</a></li>   <!--jinja templating method of url for-->
+             <li><a href="{{ url_for('about') }}">About</a></li>
+             <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
     </nav>
     <h1>About Page</h1>
