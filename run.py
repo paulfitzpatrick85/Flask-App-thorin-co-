@@ -22,6 +22,11 @@ def about():
 def contact():
     return render_template("contact.html")  # the view*
 
+
+@app.route("/careers")
+def careers():
+    return render_template("careers.html")
+
 # create instancce of class. convention in flask is that variable is called app
 # first arg of flask class is the name of the apps module/package
 # single module used so __name__ is used = built in python variable, 
