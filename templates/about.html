@@ -14,18 +14,34 @@
 <!--iterate through company json file data-->
     {% for member in company %}
 
+<!--make images/text alternate left to right down the page-->
         <div class="row featurette">
-            <div class="col-md-7"> <!--occupys 7 of 12 spaces of bs grid, test looks like its floated left-->
-                <h3>{{ member.name }}</h3> <!--get name key of object-->
-                <p>{{ member.description }}</p>
-            </div>
-            
+            {% if loop.index % 2 != 0 %}
+                <div class="col-md-7"> <!--occupys 7 of 12 spaces of bs grid, test looks like its floated left-->
+                    <h3>{{ loop.index }}. {{ member.name }}</h3> <!--get name key of object-->
+                    <p>{{ member.description }}</p>
+                </div>
+                
+                <div class="col-md-5"> <!--occupy remaining 5 of 12 spaces in bd grid-->
+                    <img src="{{member.image_source}}" alt="" class="featurette-image image-responsive">
+                </div>
+            {% else %} 
             <div class="col-md-5"> <!--occupy remaining 5 of 12 spaces in bd grid-->
                 <img src="{{member.image_source}}" alt="" class="featurette-image image-responsive">
             </div>
+            <div class="col-md-7"> <!--occupys 7 of 12 spaces of bs grid, test looks like its floated left-->
+                <h3>{{ loop.index }}. {{ member.name }}</h3> <!--get name key of object-->
+                <p>{{ member.description }}</p>
+            </div>
+
+            {% endif %}
         </div>
 
-        <hr class="featurette-divider">
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
 
     {% endfor %}
 
