@@ -1,6 +1,7 @@
 import os
 # import Flask from flask. capital f Flask is class name
 # saves from having to type html with tags etc
+import json
 from flask import Flask, render_template 
 
 app = Flask(__name__)    
@@ -15,7 +16,14 @@ def index():
 
 @app.route("/about")
 def about():                                                      # pyhton list
-    return render_template("about.html", page_title="About", list_of_numbers=[1, 2, 3]) 
+    data = []
+    # python opens json file as read only and asigns data to json_data
+    with open("data/company.json", "r") as json_data:
+        # set empty data list to equal parsed json data thats sent through
+        data = json.load(json_data)
+    return render_template("about.html", page_title="About", company=data) 
+# company is a new variable, it is sent to html template,
+# its equal to list of data from json file
 
 
 @app.route("/contact")
