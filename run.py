@@ -15,17 +15,17 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")  # the view*
+    return render_template("about.html", page_title="About")  # the view*
 
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.html")  # the view*
+    return render_template("contact.html", page_title="Contact")  # the view*
 
 
 @app.route("/careers")
 def careers():
-    return render_template("careers.html")
+    return render_template("careers.html", page_title="Careers")
 
 # create instancce of class. convention in flask is that variable is called app
 # first arg of flask class is the name of the apps module/package
