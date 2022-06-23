@@ -14,8 +14,8 @@ def index():
 
 
 @app.route("/about")
-def about():
-    return render_template("about.html", page_title="About")  # the view*
+def about():                                                      # pyhton list
+    return render_template("about.html", page_title="About", list_of_numbers=[1, 2, 3]) 
 
 
 @app.route("/contact")
