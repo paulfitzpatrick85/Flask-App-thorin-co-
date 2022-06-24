@@ -1,9 +1,12 @@
-core.Microsoft*
-core.mongo*
-core.python*
+# core.Microsoft*
+# core.mongo*
+# core.python*
+# env.py
+# __pycache__/
+# *.py[cod]
+# node_modules/
+# .github/
+# cloudinary_python.txt
 env.py
-__pycache__/
-*.py[cod]
-node_modules/
-.github/
-cloudinary_python.txt
+__pycache__/  
+# '/' is identified as directory, so ignores all within it

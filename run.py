@@ -2,10 +2,14 @@ import os
 # import Flask from flask. capital f Flask is class name
 # saves from having to type html with tags etc
 import json
-from flask import Flask, render_template, request  
+from flask import Flask, render_template, request, flash
 # request finds what method was used, will contain form obj when posted
 
-app = Flask(__name__)    
+if os.path.exists("env.py"):
+    import env
+
+app = Flask(__name__)   
+app.secret_key = os.environ.get("SECRET_KEY") 
 
 
 # app.route decorator
@@ -42,8 +46,7 @@ def about_member(member_name):  # view(can take the above as arg)
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
-        print(request.form.get("name"))  # get name value from form, should print to debug console(but doesn't??)
-        print(request.form["email"]) # using [], is key not found, exception is thrown, where .get would display NONE
+        flash("Thanks {}, we have received your message!".format(request.form.get("name")))  #line was too long, hit enter after opening ( to indent correctly on next line 
     return render_template("contact.html", page_title="Contact")  # the view*
 
 
