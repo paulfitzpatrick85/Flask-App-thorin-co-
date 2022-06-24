@@ -26,6 +26,18 @@ def about():                                                      # pyhton list
 # its equal to list of data from json file
 
 
+#  <> pass data from url path to the view 
+@app.route("/about/<member_name>")
+def about_member(member_name):  # view(can take the above as arg)
+    member = {}  # empty obj to store data later
+    with open("data/company.json", "r") as json_data:  # open as read-only call it json_data
+        data = json.load(json_data)  # convert data pulled thru into json + store in data
+        for obj in data:  # iterate thru data
+            if obj["url"] == member_name:
+                member = obj  # empty obj member be = to obj in loop instance
+    return render_template("member.html", member=member)  # 1st member is variable passed thru to html file, 2nd is from line 32 + 37
+
+
 @app.route("/contact")
 def contact():
     return render_template("contact.html", page_title="Contact")  # the view*
