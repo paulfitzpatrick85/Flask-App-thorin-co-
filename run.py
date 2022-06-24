@@ -2,7 +2,8 @@ import os
 # import Flask from flask. capital f Flask is class name
 # saves from having to type html with tags etc
 import json
-from flask import Flask, render_template 
+from flask import Flask, render_template, request  
+# request finds what method was used, will contain form obj when posted
 
 app = Flask(__name__)    
 
@@ -38,8 +39,11 @@ def about_member(member_name):  # view(can take the above as arg)
     return render_template("member.html", member=member)  # 1st member is variable passed thru to html file, 2nd is from line 32 + 37
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    if request.method == "POST":
+        print(request.form.get("name"))  # get name value from form, should print to debug console(but doesn't??)
+        print(request.form["email"]) # using [], is key not found, exception is thrown, where .get would display NONE
     return render_template("contact.html", page_title="Contact")  # the view*
 
 
